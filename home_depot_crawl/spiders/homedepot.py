@@ -19,8 +19,8 @@ class HomedepotSpider(Spider):
         items = []
 
         for bulb in bulbs:
-            item = LightBulb
-            #item['name'] = bulb.xpath('a/text()').extract()
+            item = LightBulb()
+            item['name'] = bulb.xpath('a/text()').extract()
             items.append(item)
 
         return items
