@@ -15,12 +15,12 @@ class HomedepotSpider(Spider):
         """
         """
         sel = Selector(response)
-        bulbs = sel.xpath('//*[@id="products"]')
+        bulbs = sel.xpath('//*[@id="products"]/div')
         items = []
 
         for bulb in bulbs:
             item = LightBulb()
-            item['name'] = bulb.xpath('a/text()').extract()
+            item['name'] = bulb.xpath('//*[@class="item_description"]').extract()
             items.append(item)
 
         return items
