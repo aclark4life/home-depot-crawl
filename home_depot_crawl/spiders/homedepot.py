@@ -2,8 +2,8 @@
 import scrapy
 
 
-class HomedepotcrawlSpider(scrapy.Spider):
-    name = "HomeDepotCrawl"
+class HomedepotSpider(scrapy.Spider):
+    name = "homedepot"
     allowed_domains = ["homedepot.com"]
     start_urls = (
         'http://www.homedepot.com/',
