@@ -15,7 +15,7 @@ class HomedepotSpider(Spider):
         """
         """
         sel = Selector(response)
-        bulbs = sel.xpath('//div[@id="products"]/div')
+        bulbs = sel.xpath('//*[@id="products"]')
         items = []
 
         for bulb in bulbs:
