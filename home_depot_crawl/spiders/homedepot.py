@@ -6,6 +6,9 @@ import xlwt
 
 
 def output(items):
+    """
+    Via http://stackoverflow.com/questions/13437727/python-write-to-excel-spreadsheet
+    """
     book = xlwt.Workbook()
     sheet = book.add_sheet('1')
     count = 0
@@ -28,11 +31,13 @@ class HomedepotSpider(Spider):
         """
         """
         sel = Selector(response)
+        # Select all the light bulbs in the products div
         bulbs = sel.xpath('//*[@id="products"]/div')
         items = []
 
         for bulb in bulbs:
             item = LightBulb()
+            # Select the description relative to the first div
             item['name'] = ' '.join(bulb.xpath('div//a[@class="item_description"]/text()').re('\w+'))
             items.append(item)
 
