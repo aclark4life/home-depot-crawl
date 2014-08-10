@@ -20,7 +20,7 @@ class HomedepotSpider(Spider):
 
         for bulb in bulbs:
             item = LightBulb()
-            item['name'] = bulb.xpath('//*[@class="item_description"]').extract()
+            item['name'] = ' '.join(bulb.xpath('div//a[@class="item_description"]/text()').re('\w+'))
             items.append(item)
 
         return items
