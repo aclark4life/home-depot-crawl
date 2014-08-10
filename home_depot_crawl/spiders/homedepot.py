@@ -9,6 +9,8 @@ def output(items):
     book = xlwt.Workbook()
     sheet = book.add_sheet('1')
     count = 0
+    sheet.write(count, 0, 'Light Bulbs')
+    count += 1
     for item in items:
         sheet.write(count, 0, item['name'])
         count += 1
