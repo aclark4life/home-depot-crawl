@@ -2,6 +2,17 @@
 from scrapy.spider import Spider
 from scrapy.selector import Selector
 from home_depot_crawl.items import LightBulb
+import xlwt
+
+
+def output(items):
+    book = xlwt.Workbook()
+    sheet = book.add_sheet('1')
+    count = 0
+    for item in items:
+        sheet.write(count, 0, item['name'])
+        count += 1
+    book.save('homedepot.xls')
 
 
 class HomedepotSpider(Spider):
@@ -23,4 +34,5 @@ class HomedepotSpider(Spider):
             item['name'] = ' '.join(bulb.xpath('div//a[@class="item_description"]/text()').re('\w+'))
             items.append(item)
 
+        output(items)
         return items
